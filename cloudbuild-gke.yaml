@@ -24,7 +24,7 @@ steps:
 substitutions:
   _PROJECT_ID: gcp-devops-468110
   _CINAME: gke-image
-  _VERSION: v2.0
+  _VERSION: v3.0
 
 options:
   logging: CLOUD_LOGGING_ONLY
