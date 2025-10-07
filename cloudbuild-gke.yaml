@@ -1,0 +1,22 @@
+steps:
+  # Clone the external Git repo
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/Prateeksingh123/gcp-demo-project4.git']
+
+  # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/${PROJECT_ID}/${CINAME}:${VERSION}', '.']
+
+  # Push the image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/${PROJECT_ID}/${CINAME}:${VERSION}']
+
+substitutions:
+  PROJECT_ID: gcp-devops-468110
+  CINAME: gke-image
+  VERSION: v1.0
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+timeout: 1200s
