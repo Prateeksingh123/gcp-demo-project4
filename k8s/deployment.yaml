@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gke-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gke-app
+  template:
+    metadata:
+      labels:
+        app: gke-app
+    spec:
+      containers:
+        - name: gke-app
+          image: gcr.io/gcp-devops-468110/gke-image:v1.0
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gke-app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: gke-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

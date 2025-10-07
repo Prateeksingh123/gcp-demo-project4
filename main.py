@@ -5,7 +5,7 @@ app =  Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Welcome to Python Flask World V1.0 && from CICD GKE'
+    return 'Welcome to Python Flask World V2.0 && from CICD GKE'
 
 
 if __name__ == '__main__':
